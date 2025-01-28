@@ -40,6 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
   typeEffect(); // Bắt đầu hiệu ứng
 });
 
+// Hiển thị modal với ảnh đầy đủ
+function showFullImage(imageSrc) {
+  const modal = document.getElementById('imageModal');
+  const fullImage = document.getElementById('fullImage');
+  modal.style.display = 'flex'; // Hiển thị modal
+  fullImage.src = imageSrc; // Gắn src ảnh vào modal
+}
+
+// Đóng modal
+function closeModal(event) {
+  // Kiểm tra nếu nhấn vào vùng ngoài hoặc vào nút "X"
+  const modal = document.getElementById('imageModal');
+  if (event.target === modal || event.target.classList.contains('close')) {
+      modal.style.display = 'none';
+  }
+}
+
 
 /**
 * Template Name: Personal

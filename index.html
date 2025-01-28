@@ -663,8 +663,8 @@
                                 </div>
 
                                 <!-- Modal -->
-                                <div id="imageModal" class="modal" onclick="closeModal()">
-                                    <span class="close">&times;</span>
+                                <div id="imageModal" class="modal" onclick="closeModal(event)">
+                                    <span class="close" onclick="closeModal(event)">&times;</span>
                                     <img id="fullImage" class="modal-content" />
                                 </div>
 

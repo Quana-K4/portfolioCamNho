@@ -1,0 +1,1131 @@
+/* Fonts - Các biến font chữ dùng trên toàn website */
+:root {
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* Font mặc định cho nội dung */
+    --heading-font: "Raleway", sans-serif;
+    /* Font dành riêng cho tiêu đề */
+    --nav-font: "Poppins", sans-serif;
+    /* Font dùng cho thanh điều hướng */
+}
+
+/* Global Colors - Các biến màu toàn cục được dùng xuyên suốt website. Thay đổi ở đây sẽ áp dụng cho toàn bộ giao diện website */
+:root {
+    --background-color: #121212;
+    --background-color-rgb: rgb(18, 18, 18);
+    /* Màu nền cho toàn bộ website, bao gồm từng phần riêng lẻ */
+    --default-color: #fafafa;
+    /* Màu mặc định dùng cho phần lớn nội dung văn bản trên toàn website */
+    --heading-color: #ffffff;
+    /* Màu dùng cho tiêu đề, phụ đề và các phần tiêu biểu trên website */
+    --accent-color: #FF69B4;
+    /* Màu nhấn đại diện cho thương hiệu, dùng cho nút, liên kết, hoặc các phần cần nổi bật */
+    --surface-color: #1a1a1a;
+    /* Màu nền cho các phần tử như thẻ, hộp icon hoặc các phần cần phân biệt với nền chính */
+    --contrast-color: #000000;
+    /* Màu tương phản để đảm bảo nội dung dễ đọc trên nền có màu accent, tiêu đề hoặc mặc định */
+}
+
+/* Nav Menu Colors - Các biến màu dành riêng cho thanh menu điều hướng. Tách biệt với màu toàn cục để dễ tùy chỉnh */
+:root {
+    --nav-color: #fafafa;
+    /* Màu mặc định của liên kết trong thanh điều hướng */
+    --nav-hover-color: #ff69b4;
+    --nav-hover-color-rgb: rgba(255, 105, 180, 0.189);
+    /* Màu khi di chuột hoặc khi liên kết đang hoạt động (active) */
+    --nav-mobile-background-color: #1a1a1a;
+    /* Màu nền cho menu điều hướng trên thiết bị di động */
+    --nav-dropdown-background-color: #1a1a1a;
+    /* Màu nền cho các mục dropdown khi di chuột vào menu chính */
+    --nav-dropdown-color: #fafafa;
+    /* Màu liên kết trong dropdown menu */
+    --nav-dropdown-hover-color: #FF69B4;
+    /* Màu khi di chuột vào liên kết trong dropdown menu */
+}
+
+/* Color Presets - Các class ghi đè màu toàn cục khi áp dụng cho một phần tử hoặc một vùng, nhằm tái sử dụng cách phối màu giống nhau */
+
+.light-background {
+    --background-color: #1a1a1a;
+    /* Màu nền sáng hơn */
+    --surface-color: #343434;
+    /* Màu nền bề mặt sáng hơn */
+}
+
+.dark-background {
+    --background-color: rgba(15, 15, 15, 0.975);
+    /* Màu nền tối */
+    --default-color: #ffffff;
+    /* Màu chữ mặc định là trắng */
+    --heading-color: #ffffff;
+    /* Màu tiêu đề là trắng */
+    --surface-color: #292929f9;
+    /* Màu nền bề mặt tối */
+    --contrast-color: #000000;
+    /* Màu tương phản */
+}
+
+/* Smooth scroll - Tính năng cuộn mượt */
+:root {
+    scroll-behavior: smooth;
+    /* Bật tính năng cuộn mượt */
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+# Các định dạng chung và class dùng chung
+--------------------------------------------------------------*/
+body {
+    color: var(--default-color);
+    /* Màu chữ mặc định */
+    background-color: var(--background-color);
+    /* Màu nền mặc định */
+    font-family: var(--default-font);
+    /* Font chữ mặc định */
+}
+
+a {
+    color: var(--accent-color);
+    /* Màu chữ cho liên kết */
+    text-decoration: none;
+    /* Loại bỏ gạch chân mặc định của liên kết */
+    transition: 0.3s;
+    /* Hiệu ứng chuyển đổi mượt khi thay đổi trạng thái */
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 25%);
+    /* Màu khi hover, làm sáng 25% */
+    text-decoration: none;
+    /* Giữ nguyên trạng thái không gạch chân khi hover */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    /* Màu chữ cho các tiêu đề */
+    font-family: var(--heading-font);
+    /* Font chữ riêng cho tiêu đề */
+}
+
+/*--------------------------------------------------------------
+# Global Header
+# Header chung cho toàn trang
+--------------------------------------------------------------*/
+.header {
+    --background-color: rgba(0, 0, 0, 0);
+    /* Màu nền trong suốt mặc định */
+    color: var(--default-color);
+    /* Màu chữ mặc định */
+    background-color: var(--background-color);
+    /* Màu nền áp dụng biến */
+    padding: 15px 0;
+    /* Khoảng cách trên dưới của header */
+    transition: all 0.5s;
+    /* Hiệu ứng chuyển đổi mượt khi có thay đổi */
+    z-index: 997;
+    /* Lớp hiển thị của header để đảm bảo nằm trên các phần khác */
+}
+
+.header .logo {
+    line-height: 1;
+    /* Dòng của logo không thừa khoảng cách */
+}
+
+.header .logo img {
+    max-height: 32px;
+    /* Chiều cao tối đa của logo */
+    margin-right: 8px;
+    /* Khoảng cách giữa logo và phần text */
+}
+
+.header .logo h1 {
+    font-size: 30px;
+    /* Kích thước chữ cho tên/logo */
+    margin: 0;
+    /* Loại bỏ khoảng cách mặc định */
+    font-weight: 700;
+    /* Độ đậm chữ của tiêu đề logo */
+    color: var(--heading-color);
+    /* Màu chữ cho logo */
+}
+
+.scrolled .header {
+    box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+    /* Tạo bóng cho header khi cuộn trang */
+}
+
+#header .sitename {
+    color: var(--accent-color);
+    /* Màu cam */
+}
+
+/*--------------------------------------------------------------
+# Global Header on Scroll
+# Header khi cuộn trang
+--------------------------------------------------------------*/
+.scrolled .header {
+    --background-color: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    /* Thay đổi màu nền khi cuộn */
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Điều hướng cho màn hình máy tính để bàn */
+@media (min-width: 1200px) {
+    .navmenu {
+        padding: 0;
+    }
+
+    .navmenu ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        /* Sử dụng Flexbox để căn chỉnh các phần tử trong menu ngang */
+        list-style: none;
+        /* Loại bỏ dấu chấm trong danh sách */
+        align-items: center;
+        /* Căn giữa các phần tử dọc */
+    }
+
+    .navmenu li {
+        position: relative;
+    }
+
+    .navmenu>ul>li {
+        white-space: nowrap;
+        /* Ngăn không cho văn bản bị xuống dòng */
+        padding: 15px 14px;
+    }
+
+    .navmenu>ul>li:last-child {
+        padding-right: 0;
+        /* Không có lề phải cho phần tử cuối cùng */
+    }
+
+    .navmenu a,
+    .navmenu a:focus {
+        color: var(--nav-color);
+        /* Màu sắc cho liên kết trong menu */
+        font-size: 15px;
+        padding: 0 2px;
+        font-family: var(--nav-font);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        /* Ngăn không cho liên kết xuống dòng */
+        transition: 0.3s;
+        /* Hiệu ứng chuyển đổi cho trạng thái hover */
+        position: relative;
+    }
+
+    .navmenu a i,
+    .navmenu a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+        transition: 0.3s;
+    }
+
+    .navmenu>ul>li>a:before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--nav-hover-color);
+        /* Màu sắc khi hover */
+        visibility: hidden;
+        width: 0px;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .navmenu a:hover:before,
+    .navmenu li:hover>a:before,
+    .navmenu .active:before {
+        visibility: visible;
+        width: 25px;
+        /* Độ dài thanh gạch dưới khi hover */
+    }
+
+    .navmenu li:hover>a,
+    .navmenu .active,
+    .navmenu .active:focus {
+        color: var(--nav-hover-color);
+        /* Màu khi hover hoặc đang hoạt động */
+    }
+
+    /* Menu dropdown */
+    .navmenu .dropdown ul {
+        margin: 0;
+        padding: 10px 0;
+        background: var(--nav-dropdown-background-color);
+        display: block;
+        position: absolute;
+        visibility: hidden;
+        left: 14px;
+        top: 130%;
+        opacity: 0;
+        transition: 0.3s;
+        border-radius: 4px;
+        z-index: 99;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .navmenu .dropdown ul li {
+        min-width: 200px;
+    }
+
+    .navmenu .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 15px;
+        color: var(--nav-dropdown-color);
+    }
+
+    .navmenu .dropdown ul a i {
+        font-size: 12px;
+    }
+
+    .navmenu .dropdown ul a:hover,
+    .navmenu .dropdown ul .active:hover,
+    .navmenu .dropdown ul li:hover>a {
+        color: var(--nav-dropdown-hover-color);
+        /* Màu khi hover vào item trong dropdown */
+    }
+
+    .navmenu .dropdown:hover>ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+        /* Hiển thị menu dropdown khi hover */
+    }
+
+    .navmenu .dropdown .dropdown ul {
+        top: 0;
+        left: -90%;
+        visibility: hidden;
+    }
+
+    .navmenu .dropdown .dropdown:hover>ul {
+        opacity: 1;
+        top: 0;
+        left: -100%;
+        visibility: visible;
+    }
+}
+
+/* Điều hướng cho thiết bị di động */
+@media (max-width: 1199px) {
+    .mobile-nav-toggle {
+        color: var(--nav-color);
+        font-size: 28px;
+        line-height: 0;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .navmenu {
+        padding: 0;
+        z-index: 9997;
+    }
+
+    .navmenu ul {
+        display: none;
+        /* Ẩn menu trên mobile */
+        list-style: none;
+        position: absolute;
+        inset: 60px 20px 20px 20px;
+        padding: 10px 0;
+        margin: 0;
+        border-radius: 6px;
+        background-color: var(--nav-mobile-background-color);
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        box-shadow: none;
+        overflow-y: auto;
+        transition: 0.3s;
+        z-index: 9998;
+    }
+
+    .navmenu a,
+    .navmenu a:focus {
+        color: var(--nav-dropdown-color);
+        padding: 10px 20px;
+        font-family: var(--nav-font);
+        font-size: 17px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
+
+    .navmenu a i,
+    .navmenu a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: 0.3s;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    }
+
+    .navmenu a i:hover,
+    .navmenu a:focus i:hover {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        /* Màu khi hover vào icon trong menu */
+    }
+
+    .navmenu a:hover,
+    .navmenu .active,
+    .navmenu .active:focus {
+        color: var(--nav-dropdown-hover-color);
+        /* Màu khi hover vào liên kết */
+    }
+
+    .navmenu .active i,
+    .navmenu .active:focus i {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        transform: rotate(180deg);
+        /* Hiệu ứng xoay khi menu đang hoạt động */
+    }
+
+    .navmenu .dropdown ul {
+        position: static;
+        display: none;
+        z-index: 99;
+        padding: 10px 0;
+        margin: 10px 20px;
+        background-color: var(--nav-dropdown-background-color);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .navmenu .dropdown ul ul {
+        background-color: rgba(33, 37, 41, 0.1);
+    }
+
+    .navmenu .dropdown>.dropdown-active {
+        display: block;
+        background-color: rgba(33, 37, 41, 0.03);
+    }
+
+    .mobile-nav-active {
+        overflow: hidden;
+    }
+
+    .mobile-nav-active .mobile-nav-toggle {
+        color: #fff;
+        position: absolute;
+        font-size: 32px;
+        top: 15px;
+        right: 15px;
+        margin-right: 0;
+        z-index: 9999;
+    }
+
+    .mobile-nav-active .navmenu {
+        position: fixed;
+        overflow: hidden;
+        inset: 0;
+        background: rgba(33, 37, 41, 0.8);
+        transition: 0.3s;
+    }
+
+    .mobile-nav-active .navmenu>ul {
+        display: block;
+        /* Hiển thị menu khi kích hoạt trên mobile */
+    }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    position: relative;
+}
+
+.section-title h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: var(--accent-color);
+    margin: 4px 10px;
+}
+
+.section-title div {
+    color: var(--heading-color);
+    margin: 0;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--heading-font);
+}
+
+
+/*--------------------------------------------------------------
+# Hero Session
+--------------------------------------------------------------*/
+
+/* Định nghĩa khu vực Hero với hình ảnh nền và nội dung giữa trang */
+.hero {
+    width: 100%;
+    /* Chiều rộng chiếm toàn bộ màn hình */
+    min-height: 100vh;
+    /* Chiều cao tối thiểu bằng chiều cao của màn hình */
+    position: relative;
+    /* Để các phần tử con được định vị tuyệt đối bên trong */
+    padding: 80px 0;
+    /* Khoảng cách trên và dưới */
+    display: flex;
+    /* Dùng Flexbox để căn giữa nội dung */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
+}
+
+/* Định dạng phần chứa nội dung trong Hero */
+.hero .container {
+    position: relative;
+    /* Để đặt các phần tử con ở vị trí tương đối */
+    z-index: 3;
+    /* Đảm bảo nội dung luôn ở trên hình ảnh nền */
+}
+
+/* Định dạng tiêu đề */
+.hero h1 {
+    margin: 0;
+    /* Xóa khoảng cách mặc định */
+    font-size: 64px;
+    /* Kích thước chữ lớn */
+    font-weight: 700;
+    /* Đậm chữ */
+}
+
+/* Định dạng đoạn văn */
+.hero h2 {
+    margin: 5px 0 0 0;
+    /* Khoảng cách trên đoạn văn */
+    font-size: 26px;
+    /* Kích thước chữ vừa phải */
+}
+
+/* Định dạng phần văn bản con với đường viền dưới */
+.hero h2 span {
+    letter-spacing: 1px;
+    /* Khoảng cách giữa các ký tự */
+    border-bottom: 2px solid var(--accent-color);
+    /* Đường viền dưới với màu sắc nhấn mạnh */
+}
+
+/* Định dạng các liên kết mạng xã hội trong Hero */
+.hero .social-links {
+    margin-top: 25px;
+    /* Khoảng cách từ nội dung chính xuống các liên kết */
+}
+
+/* Định dạng các liên kết mạng xã hội */
+.hero .social-links a {
+    background-color: color-mix(in srgb, var(--default-color), transparent 90%);
+    /* Màu nền với hiệu ứng trộn màu */
+    color: var(--default-color);
+    /* Màu chữ */
+    font-size: 14px;
+    /* Kích thước chữ nhỏ */
+    width: 40px;
+    /* Chiều rộng của các biểu tượng */
+    height: 40px;
+    /* Chiều cao của các biểu tượng */
+    border-radius: 50px;
+    /* Làm các biểu tượng thành hình tròn */
+    display: inline-flex;
+    /* Dùng flex để căn giữa nội dung */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
+    margin-right: 20px;
+    /* Khoảng cách bên phải các biểu tượng */
+    transition: 0.3s;
+    /* Hiệu ứng chuyển động khi hover */
+}
+
+/* Hiệu ứng hover cho các liên kết mạng xã hội */
+.hero .social-links a:hover {
+    background-color: var(--accent-color);
+    /* Màu nền thay đổi khi hover */
+}
+
+/* Các thay đổi cho kích thước khi màn hình nhỏ (<=768px) */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+        /* Giảm kích thước chữ cho tiêu đề */
+    }
+
+    .hero p {
+        font-size: 20px;
+        /* Giảm kích thước chữ cho đoạn văn */
+    }
+}
+
+/* Phần avatar */
+.profile-img {
+    border-radius: 50%;
+    border: 5px solid var(--accent-color);
+    box-shadow: 0 0 3.5rem var(--accent-color);
+}
+
+.avatar-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .avatar-hero {
+        padding-top: 0;
+        padding-bottom: 5rem;
+    }
+}
+
+.hero p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.title-hero {
+    display: flex;
+    /* Kích hoạt Flexbox */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+}
+
+.typed-cursor {
+    display: inline-block;
+    font-weight: bold;
+    font-size: inherit;
+    color: var(--accent-color);
+    animation: blink 0.7s infinite step-start;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content h2 {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.about .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about .content ul li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.about .content ul strong {
+    margin-right: 10px;
+}
+
+.about .content ul i {
+    font-size: 16px;
+    margin-right: 5px;
+    color: var(--accent-color);
+    line-height: 0;
+}
+
+/*Global Page Titles & Breadcrumbs*/
+.page-title {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    position: relative;
+}
+
+.page-title .heading {
+    padding: 2rem 0 80px 0;
+}
+
+.page-title .heading h1 {
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.page-title nav {
+    background-color: var(--surface-color);
+    padding: 20px 0;
+}
+
+.page-title nav ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.page-title nav ol li+li {
+    padding-left: 10px;
+}
+
+.page-title nav ol li+li::before {
+    content: "/";
+    display: inline-block;
+    padding-right: 10px;
+    color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+@media (min-width: 768px) {
+    .md\:w-96 {
+        width: 24rem;
+    }
+}
+
+.bg-amber-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(253 230 138 / var(--tw-bg-opacity));
+}
+
+/*Stats Section*/
+.stats i {
+    background-color: var(--surface-color);
+    color: var(--accent-color);
+    box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+    width: 54px;
+    height: 54px;
+    font-size: 24px;
+    border-radius: 50px;
+    border: 2px solid var(--background-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.stats .stats-item {
+    background-color: var(--surface-color);
+    margin-top: -27px;
+    padding: 30px 30px 25px 30px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 0;
+}
+
+.stats .stats-item span {
+    font-size: 36px;
+    display: block;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.stats .stats-item p {
+    padding: 0;
+    margin: 0;
+    font-family: var(--heading-font);
+    font-size: 16px;
+}
+
+/*Skills Section*/
+.skills .progress {
+    height: 60px;
+    display: block;
+    background: none;
+    border-radius: 0;
+}
+
+.skills .progress .skill {
+    color: var(--heading-color);
+    padding: 0;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    font-family: var(--heading-font);
+}
+
+.skills .progress .skill .val {
+    float: right;
+    font-style: normal;
+}
+
+.skills .progress-bar-wrap {
+    background: color-mix(in srgb, var(--default-color), transparent 90%);
+    height: 10px;
+}
+
+.skills .progress-bar {
+    width: 1px;
+    height: 10px;
+    transition: 0.9s;
+    background-color: var(--accent-color);
+}
+
+/*Interests Section*/
+.interests .features-item {
+    background-color: var(--surface-color);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: 0.3s;
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    position: relative;
+}
+
+.interests .features-item i {
+    font-size: 32px;
+    padding-right: 10px;
+    line-height: 0;
+}
+
+.interests .features-item h3 {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+}
+
+.interests .features-item h3 a {
+    color: var(--heading-color);
+    transition: 0.3s;
+}
+
+.interests .features-item:hover {
+    border-color: var(--accent-color);
+}
+
+.interests .features-item:hover h3 a {
+    color: var(--accent-color);
+}
+
+.features-item {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.features-item:hover {
+    background-color: var(--nav-hover-color-rgb);
+    /* Màu nền khi hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Thêm bóng cho hiệu ứng */
+    transform: scale(1.05);
+    /* Tăng kích thước phần tử khi hover */
+}
+
+.features-item i {
+    font-size: 36px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.features-item:hover i {
+    transform: scale(1.2);
+    /* Zoom phần biểu tượng */
+    color: #fff;
+    /* Thay đổi màu sắc biểu tượng khi hover */
+}
+
+.features-item h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.features-item:hover h3 {
+    transform: scale(1.1);
+    /* Zoom phần chữ khi hover */
+    color: #fff;
+    /* Thay đổi màu sắc chữ khi hover */
+}
+
+.skill-level {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-100%);
+    font-size: 14px;
+    color: #888;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.features-item:hover .skill-level {
+    opacity: 1;
+    /* Hiển thị mức độ khi hover */
+    color: var(--nav-hover-color);
+    /* Thay đổi màu sắc khi hover */
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .service-item {
+    background-color: var(--surface-color);
+    text-align: center;
+    padding: 80px 20px;
+    transition: all ease-in-out 0.3s;
+    height: 100%;
+}
+
+.services .service-item .icon {
+    margin: 0 auto;
+    width: 64px;
+    height: 64px;
+    background: var(--accent-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    transform-style: preserve-3d;
+}
+
+.services .service-item .icon i {
+    color: var(--contrast-color);
+    font-size: 28px;
+    transition: ease-in-out 0.3s;
+}
+
+.services .service-item .icon::before {
+    position: absolute;
+    content: "";
+    left: -8px;
+    top: -8px;
+    height: 100%;
+    width: 100%;
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-radius: 5px;
+    transition: all 0.3s ease-out 0s;
+    transform: translateZ(-1px);
+}
+
+.services .service-item h3 {
+    font-weight: 700;
+    margin: 10px 0 15px 0;
+    font-size: 22px;
+}
+
+.services .service-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.services .service-item:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.services .service-item:hover .icon {
+    background: var(--surface-color);
+}
+
+.services .service-item:hover .icon i {
+    color: var(--accent-color);
+}
+
+.services .service-item:hover .icon::before {
+    background: color-mix(in srgb, var(--background-color), transparent 70%);
+}
+
+.services .service-item:hover h3,
+.services .service-item:hover p {
+    color: var(--contrast-color);
+}
+
+/*--------------------------------------------------------------
+# Resume Section
+--------------------------------------------------------------*/
+.resume .resume-title {
+    color: var(--heading-color);
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.resume .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.resume .resume-item h4 {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    margin-bottom: 10px;
+}
+
+.resume .resume-item h5 {
+    font-size: 16px;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.resume .resume-item ul {
+    padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+    padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+    padding-bottom: 0;
+}
+
+.resume .resume-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: var(--background-color);
+    border: 2px solid var(--accent-color);
+}
+
+.resume {
+    padding-top: 2.5rem;
+}
+
+#resume .section-title {
+    padding-bottom: 10px;
+}
+
+/* Chỉ áp dụng cho .certifications-awards */
+.certifications-awards .service-item {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* Chiều cao cố định cho cả card */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Phần hình ảnh trong .certifications-awards */
+.certifications-awards .service-content {
+    height: 100%; /* Chiều cao cố định cho phần hình ảnh */
+    overflow: hidden;
+}
+
+.certifications-awards .service-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo hình ảnh luôn phủ toàn bộ phần tử mà không bị méo */
+}
+
+/* Phần tiêu đề và mô tả trong .certifications-awards */
+.certifications-awards .service-title {
+    flex: 1; /* Phần tiêu đề và mô tả chiếm phần còn lại của card */
+    padding: 20px;
+    text-align: center;
+}
+
+.certifications-awards .service-title h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.certifications-awards .service-title p {
+    font-size: 1rem;
+}
+
+/* Modal style */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: auto;
+    max-height: 80%;
+    object-fit: contain; /* Giữ tỷ lệ ảnh gốc và không bị biến dạng */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+

@@ -1,56 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
   const typedElement = document.querySelector(".typed");
-  const words = typedElement.getAttribute("data-typed-items").split(", "); // Lấy danh sách từ
-  const typingSpeed = 100; // Tốc độ gõ (ms)
-  const pauseTime = 1500; // Thời gian dừng giữa các từ (ms)
-  let wordIndex = 0; // Vị trí từ hiện tại
-  let charIndex = 0; // Vị trí ký tự hiện tại
+  const words = typedElement.getAttribute("data-typed-items").split(", "); 
+  const typingSpeed = 100; 
+  const pauseTime = 1500; 
+  let wordIndex = 0; 
+  let charIndex = 0; 
   let isDeleting = false;
 
   function typeEffect() {
-    const currentWord = words[wordIndex]; // Lấy từ hiện tại
-    const displayText = currentWord.substring(0, charIndex); // Hiển thị ký tự
+    const currentWord = words[wordIndex]; 
+    const displayText = currentWord.substring(0, charIndex); 
 
-    typedElement.textContent = displayText; // Cập nhật nội dung
+    typedElement.textContent = displayText; 
 
     if (!isDeleting) {
-      // Đang gõ chữ
+  
       if (charIndex < currentWord.length) {
         charIndex++;
         setTimeout(typeEffect, typingSpeed);
       } else {
-        // Khi gõ xong, tạm dừng
+   
         isDeleting = true;
         setTimeout(typeEffect, pauseTime);
       }
     } else {
-      // Đang xóa chữ
+    
       if (charIndex > 0) {
         charIndex--;
-        setTimeout(typeEffect, typingSpeed / 2); // Xóa nhanh hơn
+        setTimeout(typeEffect, typingSpeed / 2); 
       } else {
-        // Xóa xong, chuyển sang từ tiếp theo
+     
         isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length; // Lặp lại từ đầu
+        wordIndex = (wordIndex + 1) % words.length; 
         setTimeout(typeEffect, typingSpeed);
       }
     }
   }
 
-  typeEffect(); // Bắt đầu hiệu ứng
+  typeEffect();
 });
 
-// Hiển thị modal với ảnh đầy đủ
+
 function showFullImage(imageSrc) {
   const modal = document.getElementById('imageModal');
   const fullImage = document.getElementById('fullImage');
-  modal.style.display = 'flex'; // Hiển thị modal
-  fullImage.src = imageSrc; // Gắn src ảnh vào modal
+  modal.style.display = 'flex'; 
+  fullImage.src = imageSrc; 
 }
 
-// Đóng modal
+
 function closeModal(event) {
-  // Kiểm tra nếu nhấn vào vùng ngoài hoặc vào nút "X"
+  
   const modal = document.getElementById('imageModal');
   if (event.target === modal || event.target.classList.contains('close')) {
       modal.style.display = 'none';
